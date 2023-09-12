@@ -65,7 +65,9 @@
     <Compile Include="Direction.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="Engine.cs" />
+    <Compile Include="GameState.cs" />
     <Compile Include="GridValue.cs" />
+    <Compile Include="Images.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
