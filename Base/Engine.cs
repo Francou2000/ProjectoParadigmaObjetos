@@ -8,7 +8,7 @@ class Engine
 {
     static IntPtr screen;
     static int ancho, alto;
-    //es coccococ
+
     public static void Initialize()
     {
         ancho = 1024;
