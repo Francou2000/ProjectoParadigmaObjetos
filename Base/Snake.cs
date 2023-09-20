@@ -8,7 +8,8 @@ namespace MyGame
 {
     public class Snake
     {
-        List<Position> snakeBody;
+        private static List<Position> snakeBody;
+        public List<Position> SnakeBody => snakeBody;
 
         public int x { get; set; }
         public int y { get; set; }

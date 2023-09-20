@@ -11,6 +11,7 @@ namespace MyGame
         public Position foodPosition = new Position();
 
         public static Snake snake = new Snake();
+        private List<Position> snakeBody;
 
         Random random = new Random();
 
@@ -36,8 +37,27 @@ namespace MyGame
 
         public void foodNewLocation()
         {
+            bool isSnake = true;
+
+            snakeBody = snake.SnakeBody;
+
+            while (isSnake)
+            {
+                isSnake = false;
+
+                
                 foodPosition.x = random.Next(15, map.Width - 15);
                 foodPosition.y = random.Next(15, map.Height - 15);
+
+                foreach (Position position in snakeBody)
+                {
+                    if (position.x == foodPosition.x && position.y == foodPosition.y)
+                    {
+                        isSnake = true;
+                    }
+                }
+            }
+                
         }
     }
 }
