@@ -13,7 +13,7 @@ namespace MyGame
     {
         static void Main(string[] args)
         {
-            Engine.Initialize();
+            Engine.Initialize(500,500,24);
 
             Map map = new Map();
             Snake snake = new Snake();
@@ -24,14 +24,16 @@ namespace MyGame
 
                 Engine.Clear();
           
-                Engine.Show();
+
 
                 food.drawFood();
                 snake.drawSnake();
                 snake.moveSnake();
                 snake.snakeGrow(food.foodLocation(), food);
                 snake.isDead();
-                
+
+                Engine.Show();
+
 
                 Sdl.SDL_Delay(20);
             }

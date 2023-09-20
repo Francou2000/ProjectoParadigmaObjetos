@@ -13,8 +13,8 @@ namespace MyGame
 
         public Map() 
         {
-            Width = 100;
-            Height = 100;
+            Width = 500;
+            Height = 500;
         }
     }
 }
