@@ -91,11 +91,11 @@ namespace MyGame
             int scaleX = 10;
             int scaleY = 10;
 
-            float distanceX = Math.Abs(snakeHead.x + (scaleX / 2) - food.x + (scaleX / 2));
-            float distanceY = Math.Abs(snakeHead.y + (scaleY / 2) - food.y + (scaleY / 2));
+            float distanceX = Math.Abs((snakeHead.x + (scaleX / 2)) - (food.x + (scaleX / 2)));
+            float distanceY = Math.Abs((snakeHead.y + (scaleY / 2)) - (food.y + (scaleY / 2)));
 
-            if (distanceX <= scaleX && distanceY <= scaleY) //snakeHead.x == food.x && snakeHead.y == food.y
-            {
+            if (distanceX <= scaleX && distanceY <= scaleY)
+            { 
                 snakeBody.Add(new Position(x, y));
                 f.foodNewLocation();
             }

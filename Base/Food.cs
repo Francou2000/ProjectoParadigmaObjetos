@@ -18,8 +18,8 @@ namespace MyGame
 
         public Food()
         {
-            foodPosition.x = random.Next(5, map.Width);
-            foodPosition.y = random.Next(5, map.Height);
+            foodPosition.x = random.Next(15, map.Width-15);
+            foodPosition.y = random.Next(15, map.Height-15);
         }
 
         public void drawFood()
@@ -34,8 +34,8 @@ namespace MyGame
 
         public void foodNewLocation()
         {
-            foodPosition.x = random.Next(5, map.Width);
-            foodPosition.y = random.Next(5, map.Height);
+            foodPosition.x = random.Next(15, map.Width - 15);
+            foodPosition.y = random.Next(15, map.Height - 15);
         }
     }
 }
