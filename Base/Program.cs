@@ -10,14 +10,18 @@ namespace MyGame
 {
 
     class Program
-    {
+    {    
+        
+        public static Map map = new Map();
+        public static Snake snake = new Snake();
+        public static Food food = new Food();
+
+
         static void Main(string[] args)
         {
             Engine.Initialize(500,500,24);
 
-            Map map = new Map();
-            Snake snake = new Snake();
-            Food food = new Food();
+
 
             while (true)
             {

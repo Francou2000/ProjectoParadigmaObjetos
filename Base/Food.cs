@@ -10,6 +10,8 @@ namespace MyGame
     {
         public Position foodPosition = new Position();
 
+        public static Snake snake = new Snake();
+
         Random random = new Random();
 
         Map map = new Map();
@@ -34,8 +36,8 @@ namespace MyGame
 
         public void foodNewLocation()
         {
-            foodPosition.x = random.Next(15, map.Width - 15);
-            foodPosition.y = random.Next(15, map.Height - 15);
+                foodPosition.x = random.Next(15, map.Width - 15);
+                foodPosition.y = random.Next(15, map.Height - 15);
         }
     }
 }

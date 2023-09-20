@@ -63,7 +63,7 @@ namespace MyGame
         {
             Input();
 
-            int speed = 5;
+            int speed = 3;
 
             if (dir == 'u')
             {
@@ -103,7 +103,7 @@ namespace MyGame
             Position snakeHead = snakeBody[snakeBody.Count - 1];
 
             int scale = 10;
-            int bodyGrowth = 1;
+            int bodyGrowth = 2;
 
             float distanceX = Math.Abs((snakeHead.x + (scale / 2)) - (food.x + (scale / 2)));
             float distanceY = Math.Abs((snakeHead.y + (scale / 2)) - (food.y + (scale / 2)));
