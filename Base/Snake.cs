@@ -15,7 +15,7 @@ namespace MyGame
 
         char dir = 'r';
 
-        static IntPtr image = Engine.LoadImage("assets/player.png");
+        static IntPtr image = Engine.LoadImage("assets/SnakeBody.png");
 
         public Snake()
         {

@@ -55,8 +55,6 @@ C:\Users\Consultoria\Dropbox\Facultad\UADE OBJETOS\BASE\Base\bin\Debug\assets\Sh
 C:\Users\Consultoria\Dropbox\Facultad\UADE OBJETOS\BASE\Base\bin\Debug\assets\Ship\Idle\1.png
 C:\Users\Consultoria\Dropbox\Facultad\UADE OBJETOS\BASE\Base\bin\Debug\assets\Ship\Idle\2.png
 C:\Users\Consultoria\Dropbox\Facultad\UADE OBJETOS\BASE\Base\bin\Debug\assets\Ship\Idle\3.png
-C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\player.png
-C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\fondo.png
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\MyGame.exe.config
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\MyGame.exe
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\MyGame.pdb
@@ -66,3 +64,5 @@ C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\obj\Debug\MyG
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\obj\Debug\MyGame.csproj.CopyComplete
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\obj\Debug\MyGame.exe
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\obj\Debug\MyGame.pdb
+C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\SnakeBody.png
+C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\Food.png

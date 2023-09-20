@@ -14,7 +14,10 @@ namespace MyGame
 
         Map map = new Map();
 
-        static IntPtr image = Engine.LoadImage("assets/player.png");
+        static IntPtr image = Engine.LoadImage("assets/Food.png");
+
+        private int scaleX = 10;
+        private int scaleY = 10;
 
         public Food()
         {
