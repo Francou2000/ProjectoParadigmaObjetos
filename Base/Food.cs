@@ -16,9 +16,6 @@ namespace MyGame
 
         static IntPtr image = Engine.LoadImage("assets/Food.png");
 
-        private int scaleX = 10;
-        private int scaleY = 10;
-
         public Food()
         {
             foodPosition.x = random.Next(5, map.Width);

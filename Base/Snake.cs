@@ -38,22 +38,22 @@ namespace MyGame
 
         public void Input()
         {
-            if (Engine.KeyPress(Engine.KEY_LEFT)) 
+            if (Engine.KeyPress(Engine.KEY_LEFT) && dir != 'r') 
             {
                 dir = 'l';
             }
 
-            if (Engine.KeyPress(Engine.KEY_RIGHT)) 
+            if (Engine.KeyPress(Engine.KEY_RIGHT) && dir != 'l') 
             {
                 dir = 'r';
             }
 
-            if (Engine.KeyPress(Engine.KEY_UP)) 
+            if (Engine.KeyPress(Engine.KEY_UP) && dir != 'd') 
             {
                 dir = 'u';
             }
 
-            if (Engine.KeyPress(Engine.KEY_DOWN)) 
+            if (Engine.KeyPress(Engine.KEY_DOWN) && dir != 'u') 
             {
                 dir = 'd';
             }
@@ -88,7 +88,13 @@ namespace MyGame
         {
             Position snakeHead = snakeBody[snakeBody.Count - 1];
 
-            if (snakeHead.x == food.x && snakeHead.y == food.y)
+            int scaleX = 10;
+            int scaleY = 10;
+
+            float distanceX = Math.Abs(snakeHead.x + (scaleX / 2) - food.x + (scaleX / 2));
+            float distanceY = Math.Abs(snakeHead.y + (scaleY / 2) - food.y + (scaleY / 2));
+
+            if (distanceX <= scaleX && distanceY <= scaleY) //snakeHead.x == food.x && snakeHead.y == food.y
             {
                 snakeBody.Add(new Position(x, y));
                 f.foodNewLocation();
