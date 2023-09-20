@@ -63,21 +63,35 @@ namespace MyGame
         {
             Input();
 
+            int speed = 5;
+
             if (dir == 'u')
             {
-                y--;
+                for (int i = 0; i < speed; i++)
+                {
+                    y--;
+                }
             }
             else if (dir == 'd')
             {
-                y++;
+                for (int i = 0; i < speed; i++)
+                {
+                    y++;
+                }
             }
             else if (dir == 'r')
             {
-                x++;
+                for (int i = 0; i < speed; i++)
+                {
+                    x++;
+                }
             }
             else if (dir == 'l')
             {
-                x--;
+                for (int i = 0; i < speed; i++)
+                {
+                    x--;
+                }
             }
 
             snakeBody.Add(new Position(x, y));
@@ -88,15 +102,19 @@ namespace MyGame
         {
             Position snakeHead = snakeBody[snakeBody.Count - 1];
 
-            int scaleX = 10;
-            int scaleY = 10;
+            int scale = 10;
+            int bodyGrowth = 1;
 
-            float distanceX = Math.Abs((snakeHead.x + (scaleX / 2)) - (food.x + (scaleX / 2)));
-            float distanceY = Math.Abs((snakeHead.y + (scaleY / 2)) - (food.y + (scaleY / 2)));
+            float distanceX = Math.Abs((snakeHead.x + (scale / 2)) - (food.x + (scale / 2)));
+            float distanceY = Math.Abs((snakeHead.y + (scale / 2)) - (food.y + (scale / 2)));
 
-            if (distanceX <= scaleX && distanceY <= scaleY)
-            { 
-                snakeBody.Add(new Position(x, y));
+            if (distanceX <= scale && distanceY <= scale)
+            {
+                for (int i = 0; i < bodyGrowth; i++ )
+                {
+                    snakeBody.Add(new Position(x, y));
+                }
+
                 f.foodNewLocation();
             }
         }
