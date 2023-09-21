@@ -50,6 +50,7 @@
     <Compile Include="Font.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Food.cs" />
+    <Compile Include="GameManager.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
