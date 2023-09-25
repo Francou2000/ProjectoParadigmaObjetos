@@ -8,7 +8,6 @@ using Tao.Sdl;
 
 namespace MyGame
 {
-
     class Program
     {    
         
@@ -16,6 +15,7 @@ namespace MyGame
         public static Snake snake = new Snake();
         public static Food food = new Food();
 
+        public static float DeltaTime;
 
         static void Main(string[] args)
         {
