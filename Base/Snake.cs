@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +12,17 @@ namespace MyGame
         private static List<Position> snakeBody;
         public List<Position> SnakeBody => snakeBody;
 
+        public bool isAlive { get; set; } = true;
+
         public int x { get; set; }
         public int y { get; set; }
 
         char dir = 'r';
 
         static IntPtr image = Engine.LoadImage("assets/SnakeBody.png");
+
+        public Map map = new Map();
+
 
         public Snake()
         {
@@ -101,7 +107,7 @@ namespace MyGame
 
         public void snakeGrow(Position food, Food f)
         {
-            Position snakeHead = snakeBody[snakeBody.Count - 1];
+            Position snakeHead = snakeBody[0];
 
             int scale = 10;
             int bodyGrowth = 2;
@@ -117,31 +123,38 @@ namespace MyGame
                 }
 
                 f.foodNewLocation();
+
+                GameManager.Instance.score++;
             }
         }
 
         public void isDead()
         {
-            Position snakeHead = snakeBody[snakeBody.Count - 1];
+            Position snakeHead = snakeBody[0];
 
-            for (int i = 0; i < snakeBody.Count - 2; i++)
+            for (int i = 10; i < snakeBody.Count; i++)
             {
                 Position snake = snakeBody[i];
 
-                if(snakeHead.x == snake.x && snakeHead.y == snake.y)
+                int scale = 10;
+
+                float distanceX = Math.Abs((snakeHead.x + (scale / 2)) - (snake.x + (scale / 2)));
+                float distanceY = Math.Abs((snakeHead.y + (scale / 2)) - (snake.y + (scale / 2)));
+
+                if (distanceX <= scale && distanceY <= scale)
                 {
-                    //muerte
+                    isAlive = false;
                 }
             }
         }
 
         public void hitWall(Map map)
         {
-            Position snakeHead = snakeBody[snakeBody.Count - 1];
+            Position snakeHead = snakeBody[0];
 
             if (snakeHead.x >= map.Width || snakeHead.x <= 0 || snakeHead.y >= map.Height || snakeHead.y <= 0 )
             {
-               //muerte
+                isAlive = false;
             }
         }
     }

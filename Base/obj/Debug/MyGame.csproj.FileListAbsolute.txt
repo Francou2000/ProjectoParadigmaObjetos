@@ -65,4 +65,10 @@ C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\obj\Debug\MyG
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\obj\Debug\MyGame.exe
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\obj\Debug\MyGame.pdb
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\SnakeBody.png
-C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\Food.png
+C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\GameOver.png
+C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\MainMenu.png
+C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\Win.png
+C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\Food\Idle\0.png
+C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\Food\Idle\1.png
+C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\Food\Idle\2.png
+C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\Food\Idle\3.png

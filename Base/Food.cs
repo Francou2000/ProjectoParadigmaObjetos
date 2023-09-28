@@ -15,19 +15,34 @@ namespace MyGame
 
         Random random = new Random();
 
-        Map map = new Map();
+        public Map map = new Map();
 
-        static IntPtr image = Engine.LoadImage("assets/Food.png");
+        private Animation currentAnimation;
+        private Animation idleAnimation;
 
         public Food()
         {
             foodPosition.x = random.Next(15, map.Width-15);
             foodPosition.y = random.Next(15, map.Height-15);
+
+            CreateAnimations();
+            currentAnimation = idleAnimation;
+        }
+
+        private void CreateAnimations()
+        {
+            List<IntPtr> idleTextures = new List<IntPtr>();
+            for (int i = 0; i < 4; i++)
+            {
+                IntPtr frame = Engine.LoadImage($"assets/Food/Idle/{i}.png");
+                idleTextures.Add(frame);
+            }
+            idleAnimation = new Animation("Idle", idleTextures, 0.1f, true);
         }
 
         public void drawFood()
         {
-            Engine.Draw(image, foodPosition.x, foodPosition.y);
+            Engine.Draw(currentAnimation.CurrentFrame , foodPosition.x, foodPosition.y);
         }
 
         public Position foodLocation()

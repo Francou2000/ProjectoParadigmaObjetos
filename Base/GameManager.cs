@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
-    internal class GameManager
+    public class GameManager
     {
         private static GameManager instance;
+        public Snake snake;
         private int gameStatus = 0; //0 inicio, 1 juego, 2 victoria, 3 derrota
         private IntPtr mainMenuScreen = Engine.LoadImage("assets/MainMenu.png");
         private IntPtr winScreen = Engine.LoadImage("assets/Win.png");
         private IntPtr gameOverScreen = Engine.LoadImage("assets/GameOver.png");
+
+        public int score { get; set; } = 0;
 
         public static GameManager Instance
         {
@@ -41,10 +44,16 @@ namespace MyGame
                     Program.Update();
                     break;
                 case 2:
-                    //  Program.Update();
+                    if (score == 10)
+                    {
+                        gameStatus = 2;
+                    }
                     break;
                 case 3:
-                    //   Program.Update();
+                    if (snake.isAlive == false)
+                    {
+                        gameStatus = 3;
+                    }
                     break;
             }
 
