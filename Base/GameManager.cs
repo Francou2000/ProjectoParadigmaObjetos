@@ -9,13 +9,11 @@ namespace MyGame
     public class GameManager
     {
         private static GameManager instance;
-        public Snake snake;
+        public Snake snake = new Snake();
         private int gameStatus = 0; //0 inicio, 1 juego, 2 victoria, 3 derrota
         private IntPtr mainMenuScreen = Engine.LoadImage("assets/MainMenu.png");
         private IntPtr winScreen = Engine.LoadImage("assets/Win.png");
         private IntPtr gameOverScreen = Engine.LoadImage("assets/GameOver.png");
-
-        public int score { get; set; } = 0;
 
         public static GameManager Instance
         {
@@ -44,13 +42,13 @@ namespace MyGame
                     Program.Update();
                     break;
                 case 2:
-                    if (score == 10)
+                    if (snake.Score == 10)
                     {
                         gameStatus = 2;
                     }
                     break;
                 case 3:
-                    if (snake.isAlive == false)
+                    if (snake.IsAlive == false)
                     {
                         gameStatus = 3;
                     }

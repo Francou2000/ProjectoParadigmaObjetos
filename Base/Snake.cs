@@ -12,7 +12,12 @@ namespace MyGame
         private static List<Position> snakeBody;
         public List<Position> SnakeBody => snakeBody;
 
-        public bool isAlive { get; set; } = true;
+        private bool isAlive = true;
+        public bool IsAlive => isAlive;
+
+        private int score = 0;
+
+        public int Score => score;
 
         public int x { get; set; }
         public int y { get; set; }
@@ -107,7 +112,7 @@ namespace MyGame
 
         public void snakeGrow(Position food, Food f)
         {
-            Position snakeHead = snakeBody[0];
+            Position snakeHead = snakeBody[snakeBody.Count - 1];
 
             int scale = 10;
             int bodyGrowth = 2;
@@ -124,7 +129,7 @@ namespace MyGame
 
                 f.foodNewLocation();
 
-                GameManager.Instance.score++;
+                score++;
             }
         }
 
@@ -144,17 +149,19 @@ namespace MyGame
                 if (distanceX <= scale && distanceY <= scale)
                 {
                     isAlive = false;
+                    Engine.Debug("colisiona");
                 }
             }
         }
 
         public void hitWall(Map map)
         {
-            Position snakeHead = snakeBody[0];
+            Position snakeHead = snakeBody[snakeBody.Count - 1];
 
             if (snakeHead.x >= map.Width || snakeHead.x <= 0 || snakeHead.y >= map.Height || snakeHead.y <= 0 )
             {
                 isAlive = false;
+                Engine.Debug("Colisiona con pared");
             }
         }
     }
