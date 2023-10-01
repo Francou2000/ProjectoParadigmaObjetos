@@ -60,7 +60,6 @@ namespace MyGame
             {
                 isSnake = false;
 
-                
                 foodPosition.x = random.Next(15, map.Width - 15);
                 foodPosition.y = random.Next(15, map.Height - 15);
 

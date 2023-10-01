@@ -9,8 +9,35 @@ namespace MyGame
     public class GameManager
     {
         private static GameManager instance;
-        public Snake snake = new Snake();
+
         private int gameStatus = 0; //0 inicio, 1 juego, 2 victoria, 3 derrota
+        public int GameStatus
+        {
+            get
+            {
+                return this.GameStatus;
+            }
+            set
+            {
+                this.gameStatus = value;
+            }
+        }
+
+        private int score = 0;
+        public int Score
+        {
+            get 
+            {
+                return this.score;
+            }
+
+            set 
+            { 
+                this.score = value; 
+            }
+        }
+
+
         private IntPtr mainMenuScreen = Engine.LoadImage("assets/MainMenu.png");
         private IntPtr winScreen = Engine.LoadImage("assets/Win.png");
         private IntPtr gameOverScreen = Engine.LoadImage("assets/GameOver.png");
@@ -40,18 +67,14 @@ namespace MyGame
                     break;
                 case 1:
                     Program.Update();
-                    break;
-                case 2:
-                    if (snake.Score == 10)
+                    if (score == 10)
                     {
                         gameStatus = 2;
                     }
                     break;
+                case 2:
+                    break;
                 case 3:
-                    if (snake.IsAlive == false)
-                    {
-                        gameStatus = 3;
-                    }
                     break;
             }
 

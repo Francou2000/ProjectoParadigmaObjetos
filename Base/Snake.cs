@@ -12,13 +12,6 @@ namespace MyGame
         private static List<Position> snakeBody;
         public List<Position> SnakeBody => snakeBody;
 
-        private bool isAlive = true;
-        public bool IsAlive => isAlive;
-
-        private int score = 0;
-
-        public int Score => score;
-
         public int x { get; set; }
         public int y { get; set; }
 
@@ -27,6 +20,8 @@ namespace MyGame
         static IntPtr image = Engine.LoadImage("assets/SnakeBody.png");
 
         public Map map = new Map();
+
+        private int snakeScore = 0;
 
 
         public Snake()
@@ -129,7 +124,11 @@ namespace MyGame
 
                 f.foodNewLocation();
 
-                score++;
+                Engine.Debug("score");
+
+                snakeScore++;
+
+                GameManager.Instance.Score = snakeScore;
             }
         }
 
@@ -148,8 +147,8 @@ namespace MyGame
 
                 if (distanceX <= scale && distanceY <= scale)
                 {
-                    isAlive = false;
-                    Engine.Debug("colisiona");
+                    GameManager.Instance.GameStatus = 3;
+                    break;
                 }
             }
         }
@@ -160,8 +159,7 @@ namespace MyGame
 
             if (snakeHead.x >= map.Width || snakeHead.x <= 0 || snakeHead.y >= map.Height || snakeHead.y <= 0 )
             {
-                isAlive = false;
-                Engine.Debug("Colisiona con pared");
+                GameManager.Instance.GameStatus = 3;
             }
         }
     }

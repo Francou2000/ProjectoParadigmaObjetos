@@ -27,7 +27,6 @@ namespace MyGame
             {
                 GameManager.Instance.Update();
                 GameManager.Instance.Render();
-
             }
         }
 
