@@ -124,8 +124,6 @@ namespace MyGame
 
                 f.foodNewLocation();
 
-                Engine.Debug("score");
-
                 snakeScore++;
 
                 GameManager.Instance.Score = snakeScore;

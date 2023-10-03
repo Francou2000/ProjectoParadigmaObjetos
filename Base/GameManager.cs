@@ -67,7 +67,7 @@ namespace MyGame
                     break;
                 case 1:
                     Program.Update();
-                    if (score == 10)
+                    if (score == 100)
                     {
                         gameStatus = 2;
                     }

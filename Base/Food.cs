@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MyGame
 {
@@ -25,10 +26,15 @@ namespace MyGame
             foodPosition.x = random.Next(15, map.Width-15);
             foodPosition.y = random.Next(15, map.Height-15);
 
+            Engine.LoadImage("assets/Food.png");
             CreateAnimations();
             currentAnimation = idleAnimation;
         }
+        public void Update()
+        {
 
+            currentAnimation.Update();
+        }
         private void CreateAnimations()
         {
             List<IntPtr> idleTextures = new List<IntPtr>();

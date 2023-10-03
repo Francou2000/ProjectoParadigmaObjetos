@@ -39,10 +39,12 @@ namespace MyGame
 
         public static void Update()
         {
+            food.Update();
             snake.moveSnake();
             snake.snakeGrow(food.foodLocation(), food);
             snake.isDead();
             snake.hitWall(map);
+
         }
 
         public static void Render()

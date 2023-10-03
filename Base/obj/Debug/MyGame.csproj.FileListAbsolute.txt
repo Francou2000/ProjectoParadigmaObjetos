@@ -72,3 +72,4 @@ C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\ass
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\Food\Idle\1.png
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\Food\Idle\2.png
 C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\Food\Idle\3.png
+C:\Users\franc\Documents\GitHub\Base\ProjectoParadigmaObjetos\Base\bin\Debug\assets\Food.png
