@@ -52,10 +52,12 @@
     <Compile Include="Engine.cs" />
     <Compile Include="Food.cs" />
     <Compile Include="GameManager.cs" />
+    <Compile Include="GameObject.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderer.cs" />
     <Compile Include="Snake.cs" />
     <Compile Include="Sound.cs" />
   </ItemGroup>
@@ -90,6 +92,10 @@
     <Content Include="assets\Win.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\Enemy\Idle\" />
+    <Folder Include="assets\Snake\Idle\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

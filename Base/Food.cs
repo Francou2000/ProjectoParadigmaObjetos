@@ -11,7 +11,8 @@ namespace MyGame
     {
         public Position foodPosition = new Position();
 
-        public static Snake snake = new Snake();
+        public static Snake snake;
+
         private List<Position> snakeBody;
 
         Random random = new Random();

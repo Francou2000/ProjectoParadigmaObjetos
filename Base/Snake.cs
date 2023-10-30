@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
-    public class Snake
+    public class Snake : GameObject
     {
         private static List<Position> snakeBody;
         public List<Position> SnakeBody => snakeBody;
+
+        private Animation idleAnimation;
 
         public int x { get; set; }
         public int y { get; set; }
@@ -23,7 +25,7 @@ namespace MyGame
 
         private int snakeScore = 0; 
 
-        public Snake()
+        public Snake(Position pos) : base(pos)
         {
             x = 20;
             y = 20;
@@ -33,14 +35,30 @@ namespace MyGame
             snakeBody.Add(new Position(x, y));
         }
 
-        public void drawSnake()
+        protected override void CreateAnimations()
+        {
+            List<IntPtr> idleTextures = new List<IntPtr>();
+
+            foreach (Position position in snakeBody)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    IntPtr frame = Engine.LoadImage($"assets/Snake/Idle/{i}.png");
+                    idleTextures.Add(frame);
+                }
+                idleAnimation = new Animation("Idle", idleTextures, 0.1f, true);
+                currentAnimation = idleAnimation;
+            }
+        }
+
+       /* public void drawSnake()
         {
             foreach (Position position in snakeBody) 
             {
                 Engine.Draw(image, position.x, position.y);
             }
            
-        }
+        }*/
 
         public void Input()
         {
