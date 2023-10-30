@@ -21,8 +21,7 @@ namespace MyGame
 
         public Map map = new Map();
 
-        private int snakeScore = 0;
-
+        private int snakeScore = 0; 
 
         public Snake()
         {
@@ -145,8 +144,7 @@ namespace MyGame
 
                 if (distanceX <= scale && distanceY <= scale)
                 {
-                    GameManager.Instance.GameStatus = 3;
-                    break;
+                    GameManager.Instance.Dead = true;
                 }
             }
         }
@@ -157,7 +155,7 @@ namespace MyGame
 
             if (snakeHead.x >= map.Width || snakeHead.x <= 0 || snakeHead.y >= map.Height || snakeHead.y <= 0 )
             {
-                GameManager.Instance.GameStatus = 3;
+                GameManager.Instance.Dead = true;
             }
         }
     }

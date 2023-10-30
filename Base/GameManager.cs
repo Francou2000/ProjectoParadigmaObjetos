@@ -6,22 +6,15 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
+    public enum GameStatus
+    {
+        mainMenu, level, victory, defeat
+    }
     public class GameManager
     {
         private static GameManager instance;
 
-        private int gameStatus = 0; //0 inicio, 1 juego, 2 victoria, 3 derrota
-        public int GameStatus
-        {
-            get
-            {
-                return this.GameStatus;
-            }
-            set
-            {
-                this.gameStatus = value;
-            }
-        }
+        private GameStatus gameStatus = GameStatus.mainMenu;
 
         private int score = 0;
         public int Score
@@ -37,6 +30,19 @@ namespace MyGame
             }
         }
 
+        private bool dead = false;
+        public bool Dead
+        {
+            get
+            {
+                return this.dead;
+            }
+
+            set
+            {
+                this.dead = value;
+            }
+        }
 
         private IntPtr mainMenuScreen = Engine.LoadImage("assets/MainMenu.png");
         private IntPtr winScreen = Engine.LoadImage("assets/Win.png");
@@ -59,28 +65,34 @@ namespace MyGame
         {
             switch (gameStatus)
             {
-                case 0:
+                case GameStatus.mainMenu:
                     if (Engine.KeyPress(Engine.KEY_ESP))
                     {
-                        gameStatus = 1;
+                        ChangeGameStatus(GameStatus.level);
                     }
                     break;
-                case 1:
+                case GameStatus.level:
                     Program.Update();
                     if (score == 100)
                     {
-                        gameStatus = 2;
+                        gameStatus = GameStatus.victory;
+                    }
+                    if (dead == true)
+                    {
+                        gameStatus = GameStatus.defeat;
                     }
                     break;
-                case 2:
+                case GameStatus.victory:
+                    //  Program.Update();
                     break;
-                case 3:
+                case GameStatus.defeat:
+                    //   Program.Update();
                     break;
             }
 
         }
 
-        public void ChangeGameStatus(int gs)
+        public void ChangeGameStatus(GameStatus gs)
         {
             gameStatus = gs;
         }
@@ -90,16 +102,16 @@ namespace MyGame
             Engine.Clear();
             switch (gameStatus)
             {
-                case 0:
+                case GameStatus.mainMenu:
                     Engine.Draw(mainMenuScreen, 0, 0);
                     break;
-                case 1:
+                case GameStatus.level:
                     Program.Render();
                     break;
-                case 2:
+                case GameStatus.victory:
                     Engine.Draw(winScreen, 0, 0);
                     break;
-                case 3:
+                case GameStatus.defeat:
                     Engine.Draw(gameOverScreen, 0, 0);
                     break;
             }
