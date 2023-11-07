@@ -7,36 +7,32 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace MyGame
 {
-    public  class Food
+    public  class Food : GameObject
     {
         public Position foodPosition = new Position();
 
-        public static Snake snake;
+        //public static Snake snake;
 
-        private List<Position> snakeBody;
+       // private List<Position> snakeBody;
 
         Random random = new Random();
 
         public Map map = new Map();
 
-        private Animation currentAnimation;
         private Animation idleAnimation;
 
-        public Food()
+        public Food(Position pos) : base(pos)
         {
-            foodPosition.x = random.Next(15, map.Width-15);
-            foodPosition.y = random.Next(15, map.Height-15);
-
             Engine.LoadImage("assets/Food.png");
             CreateAnimations();
             currentAnimation = idleAnimation;
         }
-        public void Update()
+        public override void Update()
         {
-
             currentAnimation.Update();
         }
-        private void CreateAnimations()
+
+        protected override void CreateAnimations()
         {
             List<IntPtr> idleTextures = new List<IntPtr>();
             for (int i = 0; i < 4; i++)
@@ -59,11 +55,14 @@ namespace MyGame
 
         public void foodNewLocation()
         {
-            bool isSnake = true;
+            //bool isSnake = true;
 
-            snakeBody = snake.SnakeBody;
+            foodPosition.x = random.Next(15, map.Width - 15);
+            foodPosition.y = random.Next(15, map.Height - 15);
 
-            while (isSnake)
+            //snakeBody = snake.SnakeBody;
+
+            /*while (isSnake)
             {
                 isSnake = false;
 
@@ -77,7 +76,7 @@ namespace MyGame
                         isSnake = true;
                     }
                 }
-            }
+            }*/
                 
         }
     }

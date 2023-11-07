@@ -9,16 +9,7 @@ using Tao.Sdl;
 namespace MyGame
 {
     class Program
-    {    
-        
-        public static Map map = new Map();
-        public static Snake snake = new Snake();
-        public static Food food = new Food();
-
-        private static DateTime _startTime;
-        private static float _lastTimeFrame;
-        public static float DeltaTime;
-
+    {
         static void Main(string[] args)
         {
             Initialize();
@@ -26,42 +17,31 @@ namespace MyGame
             while (true)
             {
                 GameManager.Instance.Update();
+
                 GameManager.Instance.Render();
+
+                Sdl.SDL_Delay(20);
             }
         }
 
-        public static void Initialize()
+        private static void Initialize()
         {
-            Engine.Initialize(500, 500, 24);
 
-            _startTime = DateTime.Now;
+            GameManager.Instance.Initialize();
+
         }
 
         public static void Update()
         {
-            food.Update();
-            snake.moveSnake();
-            snake.snakeGrow(food.foodLocation(), food);
-            snake.isDead();
-            snake.hitWall(map);
+
+            GameManager.Instance.Update();
 
         }
 
         public static void Render()
+
         {
-            Engine.Clear();
-
-            float currentTime = (float)(DateTime.Now - _startTime).TotalSeconds;
-            DeltaTime = currentTime - _lastTimeFrame;
-            _lastTimeFrame = currentTime;
-
-            food.drawFood();
-            snake.drawSnake();
-
-            Engine.Show();
-
-            Sdl.SDL_Delay(20);
-
+            GameManager.Instance.Render();
         }
 
     }

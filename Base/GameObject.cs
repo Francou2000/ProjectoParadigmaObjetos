@@ -9,6 +9,7 @@ namespace MyGame
     public abstract class GameObject
     {
         protected Position position;
+
         protected Renderer renderer;
         public Position Position => position;
 

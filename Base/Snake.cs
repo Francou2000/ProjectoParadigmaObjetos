@@ -4,22 +4,26 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MyGame
 {
     public class Snake : GameObject
     {
         private static List<Position> snakeBody;
+
         public List<Position> SnakeBody => snakeBody;
 
         private Animation idleAnimation;
+
+        private Food food;
+
+        public Food Food => food;
 
         public int x { get; set; }
         public int y { get; set; }
 
         char dir = 'r';
-
-        static IntPtr image = Engine.LoadImage("assets/SnakeBody.png");
 
         public Map map = new Map();
 
@@ -29,6 +33,10 @@ namespace MyGame
         {
             x = 20;
             y = 20;
+
+            Engine.LoadImage("assets/SnakeBody.png");
+            CreateAnimations();
+            currentAnimation = idleAnimation;
 
             snakeBody = new List<Position>();
 
@@ -51,14 +59,24 @@ namespace MyGame
             }
         }
 
-       /* public void drawSnake()
+        /* public void drawSnake()
+         {
+             foreach (Position position in snakeBody) 
+             {
+                 Engine.Draw(image, position.x, position.y);
+             }
+
+         }*/
+
+        public override void Update()
         {
-            foreach (Position position in snakeBody) 
-            {
-                Engine.Draw(image, position.x, position.y);
-            }
-           
-        }*/
+            currentAnimation.Update();
+
+            moveSnake();
+            snakeGrow(food.foodLocation(), food);
+            isDead();
+            hitWall(map);
+        }
 
         public void Input()
         {

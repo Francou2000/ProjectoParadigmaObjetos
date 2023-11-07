@@ -16,6 +16,9 @@ namespace MyGame
 
         private GameStatus gameStatus = GameStatus.mainMenu;
 
+        private LevelController levelController;
+        public LevelController LevelController => levelController;
+
         private int score = 0;
         public int Score
         {
@@ -59,6 +62,13 @@ namespace MyGame
 
                 return instance;
             }
+        }
+
+        public void Initialize()
+        {
+            Engine.Initialize(500, 500, 24);
+            levelController = new LevelController();
+            levelController.Initialization();
         }
 
         public void Update()
