@@ -61,6 +61,8 @@ namespace MyGame
             //bool isSnake = true;
 
             foodPosition.Transform = new Vector2 (random.Next(15, map.Width - 15), random.Next(15, map.Height - 15));
+
+
             //foodPosition.y = random.Next(15, map.Height - 15);
 
             //snakeBody = snake.SnakeBody;

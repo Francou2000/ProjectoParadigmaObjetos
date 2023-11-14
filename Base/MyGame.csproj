@@ -48,11 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
+    <Compile Include="Bullet.cs" />
+    <Compile Include="Enemy.cs" />
+    <Compile Include="EnemyFactory.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Food.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="GenericDynamicPool.cs" />
+    <Compile Include="GenericNoDynamicPool.cs" />
     <Compile Include="LevelController.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Position.cs" />
@@ -71,16 +76,16 @@
     <Content Include="assets\BulletBase.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\Bullet\New folder\0.png">
+    <Content Include="assets\Bullet\Idle\0.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\Bullet\New folder\1.png">
+    <Content Include="assets\Bullet\Idle\1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\Bullet\New folder\2.png">
+    <Content Include="assets\Bullet\Idle\2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\Bullet\New folder\3.png">
+    <Content Include="assets\Bullet\Idle\3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\EnemyBase.png">

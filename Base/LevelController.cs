@@ -25,10 +25,11 @@ namespace MyGame
         {
             time.Initialize();
 
-            player = new Snake(new Vector2(20,20));
+            food = new Food(new Vector2(100,100));
 
-            food = new Food(new Vector2(50,50));
+            player = new Snake(new Vector2(50,50), food);
         }
+
         public void Update()
         {
             time.Update();
@@ -37,8 +38,6 @@ namespace MyGame
 
             food.Update();
         }
-
-
 
         public void Render()
         {

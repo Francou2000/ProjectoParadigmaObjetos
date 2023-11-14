@@ -10,7 +10,7 @@ namespace MyGame
 {
     public class Snake : GameObject
     {
-        private static List<Position> snakeBody;
+        private List<Position> snakeBody;
 
         public List<Position> SnakeBody => snakeBody;
 
@@ -18,8 +18,8 @@ namespace MyGame
 
         private Food food;
 
-        public Food Food => food;
-
+        public event Action onDead;
+        
         public int x { get; set; }
         public int y { get; set; }
 
@@ -29,7 +29,7 @@ namespace MyGame
 
         private int snakeScore = 0; 
 
-        public Snake(Vector2 pos) : base(pos)
+        public Snake(Vector2 pos, Food food) : base(pos)
         {
 
             Engine.LoadImage("assets/SnakeBody.png");
@@ -38,8 +38,16 @@ namespace MyGame
 
             snakeBody = new List<Position>();
 
-            snakeBody.Add(new Position());
+            snakeBody.Add(new Position(pos));
+
             renderer = new Renderer(currentAnimation);
+
+            this.food = food;
+
+            x = (int)pos.x;
+            y = (int)pos.y;
+
+            onDead += GameManager.Instance.snakeDead;
         }
 
         protected override void CreateAnimations()
@@ -71,7 +79,7 @@ namespace MyGame
             currentAnimation.Update();
 
             moveSnake();
-            snakeGrow(food.foodLocation(), food);
+            snakeGrow(food);
             isDead();
             hitWall(map);
         }
@@ -134,13 +142,14 @@ namespace MyGame
                 }
             }
 
-            snakeBody.Add(new Position());
+            snakeBody.Add(new Position(new Vector2(x, y)));
             snakeBody.RemoveAt(0);
         }
 
-        public void snakeGrow(Position food, Food f)
+        public void snakeGrow (Food f)
         {
             Position snakeHead = snakeBody[snakeBody.Count - 1];
+            Position food = f.foodLocation();
 
             int scale = 10;
             int bodyGrowth = 2;
@@ -152,10 +161,12 @@ namespace MyGame
             {
                 for (int i = 0; i < bodyGrowth; i++ )
                 {
-                    snakeBody.Add(new Position());
+                    snakeBody.Add(new Position(new Vector2(x,y)));
                 }
 
                 f.foodNewLocation();
+
+                this.food = f;
 
                 snakeScore++;
 
@@ -178,7 +189,7 @@ namespace MyGame
 
                 if (distanceX <= scale && distanceY <= scale)
                 {
-                    GameManager.Instance.Dead = true;
+                    onDead.Invoke();
                 }
             }
         }
@@ -189,8 +200,19 @@ namespace MyGame
 
             if (snakeHead.Transform.x >= map.Width || snakeHead.Transform.x <= 0 || snakeHead.Transform.y >= map.Height || snakeHead.Transform.y <= 0 )
             {
-                GameManager.Instance.Dead = true;
+                onDead.Invoke();
             }
         }
+
+        public void restart()
+        {
+            snakeBody.Clear();
+            x = 50;
+            y = 50;
+            snakeBody.Add(new Position(new Vector2(x, y)));
+            GameManager.Instance.Dead = false;
+            dir = 'r';
+        }
     }
+
 }

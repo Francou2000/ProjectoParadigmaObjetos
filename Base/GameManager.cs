@@ -95,12 +95,14 @@ namespace MyGame
                 case GameStatus.victory:
                     if (Engine.KeyPress(Engine.KEY_ESP))
                     {
+                        levelController.Player.restart();
                         ChangeGameStatus(GameStatus.level);
                     }
                     break;
                 case GameStatus.defeat:
                     if (Engine.KeyPress(Engine.KEY_ESP))
                     {
+                        levelController.Player.restart();
                         ChangeGameStatus(GameStatus.level);
                     }
                     break;
@@ -132,6 +134,11 @@ namespace MyGame
                     break;
             }
             Engine.Show();
+        }
+
+        public void snakeDead()
+        {
+            dead = true;
         }
     }
 }
