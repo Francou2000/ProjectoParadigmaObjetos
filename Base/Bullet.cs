@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
-    internal class Bullet
+    public class Bullet
     {
+
+        public void destroyBullet()
+        {
+
+        }
     }
 }
