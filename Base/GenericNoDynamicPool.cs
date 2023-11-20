@@ -21,7 +21,7 @@ namespace MyGame
 
         public T GetItem(T t)
         {
-            T itemToReturn;
+             t = null;
 
             if (itemsAvailable.Count > 0)
             {
