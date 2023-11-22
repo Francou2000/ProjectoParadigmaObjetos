@@ -20,5 +20,11 @@ namespace MyGame
         {
             this.position = position;
         }
+
+        public void Translate(Vector2 direction, float speed)
+        {
+            position.x += direction.x * speed * Time.DeltaTime;
+            position.y += direction.y * speed * Time.DeltaTime;
+        }
     }
 }

@@ -16,6 +16,8 @@ namespace MyGame
 
         private Animation idleAnimation;
 
+        private int speed = 0;
+
         public Bullet(Vector2 pos) : base(pos)
         {
             Engine.LoadImage("assets/BulletBase.png");
@@ -29,6 +31,7 @@ namespace MyGame
         public override void Update()
         {
             currentAnimation.Update();
+            Move();
         }
 
         protected override void CreateAnimations()
@@ -45,6 +48,21 @@ namespace MyGame
         public override void Render()
         {
             renderer.Render(bulletPosition);
+        }
+
+        private void Move()
+        {
+            position.Translate(new Vector2(0, -1), speed);
+
+            if (position.Transform.y < 0)
+            {
+                DestroyBullet();
+            }
+        }
+
+        public void DestroyBullet()
+        {
+            
         }
 
         public Position bulletLocation()
