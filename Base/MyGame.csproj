@@ -50,7 +50,7 @@
     <Compile Include="Animation.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Enemy.cs" />
-    <Compile Include="EnemyFactory.cs" />
+    <Compile Include="FoodFactory.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Food.cs" />

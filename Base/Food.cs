@@ -10,9 +10,6 @@ namespace MyGame
     public class Food : GameObject
     {
         public Position foodPosition = new Position();
-        //public static Snake snake;
-
-       // private List<Position> snakeBody;
 
         Random random = new Random();
 
@@ -58,31 +55,7 @@ namespace MyGame
 
         public void foodNewLocation()
         {
-            //bool isSnake = true;
-
-            foodPosition.Transform = new Vector2 (random.Next(15, map.Width - 15), random.Next(15, map.Height - 15));
-
-
-            //foodPosition.y = random.Next(15, map.Height - 15);
-
-            //snakeBody = snake.SnakeBody;
-
-            /*while (isSnake)
-            {
-                isSnake = false;
-
-                foodPosition.x = random.Next(15, map.Width - 15);
-                foodPosition.y = random.Next(15, map.Height - 15);
-
-                foreach (Position position in snakeBody)
-                {
-                    if (position.x == foodPosition.x && position.y == foodPosition.y)
-                    {
-                        isSnake = true;
-                    }
-                }
-            }*/
-                
+            foodPosition.Transform = new Vector2 (random.Next(15, map.Width - 15), random.Next(15, map.Height - 15));               
         }
     }
 }

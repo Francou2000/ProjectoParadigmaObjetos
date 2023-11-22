@@ -11,9 +11,9 @@ namespace MyGame
         private List<T> itemsInUse = new List<T>();
         private List<T> itemsAvailable = new List<T>();
 
-        public T GetItem(T t)
+        public T GetItem()
         {
-            T newItem;
+            T newItem = default(T);
 
             if (itemsAvailable.Count > 0)
             {
@@ -22,7 +22,7 @@ namespace MyGame
             }
             else 
             {
-                newItem = t;
+                
             }
 
             itemsInUse.Add(newItem);

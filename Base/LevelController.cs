@@ -18,6 +18,10 @@ namespace MyGame
 
         public Food Food => food;
 
+        private Enemy enemy;
+
+        public Enemy Enemy => enemy;
+
         private Time time;
 
 
@@ -27,7 +31,9 @@ namespace MyGame
 
             food = new Food(new Vector2(100,100));
 
-            player = new Snake(new Vector2(50,50), food);
+            enemy = new Enemy(new Vector2(200, 200));
+            
+            player = new Snake(new Vector2(50,50), food, enemy);
         }
 
         public void Update()
@@ -37,6 +43,8 @@ namespace MyGame
             player.Update();
 
             food.Update();
+
+            enemy.Update();
         }
 
         public void Render()
@@ -46,6 +54,8 @@ namespace MyGame
             player.Render();
 
             food.Render();
+
+            enemy.Render();
 
             Engine.Show();
         }

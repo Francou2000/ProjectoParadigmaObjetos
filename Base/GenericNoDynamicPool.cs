@@ -19,9 +19,9 @@ namespace MyGame
             }
         }
 
-        public T GetItem(T t)
+        public T GetItem()
         {
-             t = null;
+             T itemToReturn = default(T);
 
             if (itemsAvailable.Count > 0)
             {
@@ -29,8 +29,8 @@ namespace MyGame
                 itemsAvailable.RemoveAt(0);
                 itemsAvailable.Add(itemToReturn);
             }
-
-            return t;
+            
+            return itemToReturn;
         }
 
         private void RecycleItem(T item)

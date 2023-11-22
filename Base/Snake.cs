@@ -18,6 +18,8 @@ namespace MyGame
 
         private Food food;
 
+        private Enemy enemy;
+
         public event Action onDead;
         
         public int x { get; set; }
@@ -29,7 +31,7 @@ namespace MyGame
 
         private int snakeScore = 0; 
 
-        public Snake(Vector2 pos, Food food) : base(pos)
+        public Snake(Vector2 pos, Food food, Enemy enemy) : base(pos)
         {
 
             Engine.LoadImage("assets/SnakeBody.png");
@@ -43,6 +45,8 @@ namespace MyGame
             renderer = new Renderer(currentAnimation);
 
             this.food = food;
+
+            this.enemy = enemy;
 
             x = (int)pos.x;
             y = (int)pos.y;
@@ -81,6 +85,7 @@ namespace MyGame
             moveSnake();
             snakeGrow(food);
             isDead();
+            deadByEnemy(enemy);
             hitWall(map);
         }
 
@@ -146,6 +151,11 @@ namespace MyGame
             snakeBody.RemoveAt(0);
         }
 
+        public void shoot()
+        {
+
+        }
+
         public void snakeGrow (Food f)
         {
             Position snakeHead = snakeBody[snakeBody.Count - 1];
@@ -174,6 +184,24 @@ namespace MyGame
             }
         }
 
+        public void deadByEnemy(Enemy e)
+        {
+            Position snakeHead = snakeBody[snakeBody.Count - 1];
+
+            Position enemy = e.enemyLocation();
+
+            int scale = 10;
+
+            float distanceXenemy = Math.Abs((snakeHead.Transform.x + (scale / 2)) - (enemy.Transform.x + (scale / 2)));
+            float distanceYenemy = Math.Abs((snakeHead.Transform.y + (scale / 2)) - (enemy.Transform.y + (scale / 2)));
+
+            if (distanceXenemy <= scale && distanceYenemy <= scale)
+            {
+                onDead.Invoke();
+            }
+
+        }
+
         public void isDead()
         {
             Position snakeHead = snakeBody[0];
@@ -191,6 +219,7 @@ namespace MyGame
                 {
                     onDead.Invoke();
                 }
+
             }
         }
 

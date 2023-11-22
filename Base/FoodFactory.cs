@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
-    internal class EnemyFactory
+    public class FoodFactory
     {
+
     }
 }
