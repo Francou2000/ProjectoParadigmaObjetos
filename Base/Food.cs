@@ -7,7 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace MyGame
 {
-    public class Food : GameObject
+    public class Food : GameObject, IFoodable
     {
         public Position foodPosition = new Position();
 
@@ -17,11 +17,15 @@ namespace MyGame
 
         private Animation idleAnimation;
 
-        public Food(Vector2 pos) : base(pos)
+        private float speed;
+
+        public Food(Vector2 pos, float speed) : base(pos)
         {
             Engine.LoadImage("assets/Food.png");
             CreateAnimations();
             currentAnimation = idleAnimation;
+
+            this.speed = speed;
 
             foodPosition.Transform = pos;
             renderer = new Renderer(currentAnimation);
@@ -48,12 +52,23 @@ namespace MyGame
             renderer.Render(foodPosition);
         }
 
+        private void MoveFood()
+        {
+            Position.Translate(new Vector2(1, 0), speed);
+
+            if (Position.Transform.x > 1000)
+            {
+                foodPosition.Transform = new Vector2(0 - 10, Position.Transform.y);
+            }
+        }
+
+
         public Position foodLocation()
         {
             return foodPosition;
         }
 
-        public void foodNewLocation()
+        public void GetFood()
         {
             foodPosition.Transform = new Vector2 (random.Next(15, map.Width - 15), random.Next(15, map.Height - 15));               
         }

@@ -8,7 +8,7 @@ namespace MyGame
 {
     public class LevelController
     {
-        public List<GameObject> EnemyList = new List<GameObject>();
+        public List<GameObject> GameObjectsList = new List<GameObject>();
 
         private Snake player;
 
@@ -33,7 +33,9 @@ namespace MyGame
 
             enemy = new Enemy(new Vector2(200, 200));
             
-            player = new Snake(new Vector2(50,50), food, enemy);
+            player = new Snake(new Vector2(50,50));
+
+            //GameObjectsList.Add(Enemyfactory.CreateEnemy(EnemyType.Fast, new Vector2(700, 300)));
         }
 
         public void Update()
@@ -42,9 +44,10 @@ namespace MyGame
 
             player.Update();
 
-            food.Update();
-
-            enemy.Update();
+            for (int i = 0; i < GameObjectsList.Count; i++)
+            {
+                GameObjectsList[i].Update();
+            }
         }
 
         public void Render()
@@ -53,9 +56,10 @@ namespace MyGame
 
             player.Render();
 
-            food.Render();
-
-            enemy.Render();
+            for (int i = 0; i < GameObjectsList.Count; i++)
+            {
+                GameObjectsList[i].Render();
+            }
 
             Engine.Show();
         }

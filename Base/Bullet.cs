@@ -20,7 +20,7 @@ namespace MyGame
 
         private int speed = 0;
 
-        public Bullet(Vector2 pos) : base(pos)
+        public Bullet(Vector2 pos, int speed) : base(pos)
         {
             Engine.LoadImage("assets/BulletBase.png");
             CreateAnimations();
@@ -70,10 +70,9 @@ namespace MyGame
 
         private void CheckCollisions()
         {
-
-            for (int i = 0; i < GameManager.Instance.LevelController.EnemyList.Count; i++)
+            for (int i = 0; i < GameManager.Instance.LevelController.GameObjectsList.Count; i++)
             {
-                GameObject obj = GameManager.Instance.LevelController.EnemyList[i];
+                GameObject obj = GameManager.Instance.LevelController.GameObjectsList[i];
 
                 if (obj is IDamageable objDamage)
                 {

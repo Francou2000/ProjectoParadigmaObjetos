@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace MyGame
 {
-    public class Snake : GameObject
+    public class Snake : GameObject, IDeadable
     {
         private List<Position> snakeBody;
 
@@ -25,13 +25,13 @@ namespace MyGame
         public int x { get; set; }
         public int y { get; set; }
 
-        char dir = 'r';
+        private char dir = 'r';
 
         public Map map = new Map();
 
         private int snakeScore = 0; 
 
-        public Snake(Vector2 pos, Food food, Enemy enemy) : base(pos)
+        public Snake(Vector2 pos) : base(pos)
         {
 
             Engine.LoadImage("assets/SnakeBody.png");
@@ -43,10 +43,6 @@ namespace MyGame
             snakeBody.Add(new Position(pos));
 
             renderer = new Renderer(currentAnimation);
-
-            this.food = food;
-
-            this.enemy = enemy;
 
             x = (int)pos.x;
             y = (int)pos.y;
@@ -83,9 +79,9 @@ namespace MyGame
             currentAnimation.Update();
 
             moveSnake();
-            snakeGrow(food);
+            snakeGrow();
             isDead();
-            deadByEnemy(enemy);
+            deadByEnemy();
             hitWall(map);
         }
 
@@ -151,53 +147,65 @@ namespace MyGame
             snakeBody.RemoveAt(0);
         }
 
-        public void shoot()
+        private void Shoot()
         {
-
+        
         }
 
-        public void snakeGrow (Food f)
+        public void snakeGrow ()
         {
             Position snakeHead = snakeBody[snakeBody.Count - 1];
-            Position food = f.foodLocation();
 
-            int scale = 10;
-            int bodyGrowth = 2;
-
-            float distanceX = Math.Abs((snakeHead.Transform.x + (scale / 2)) - (food.Transform.x + (scale / 2)));
-            float distanceY = Math.Abs((snakeHead.Transform.y + (scale / 2)) - (food.Transform.y + (scale / 2)));
-
-            if (distanceX <= scale && distanceY <= scale)
+            for (int i = 0; i < GameManager.Instance.LevelController.GameObjectsList.Count; i++)
             {
-                for (int i = 0; i < bodyGrowth; i++ )
+                GameObject obj = GameManager.Instance.LevelController.GameObjectsList[i];
+
+                if (obj is IFoodable objDamage)
                 {
-                    snakeBody.Add(new Position(new Vector2(x,y)));
+                    int scale = 10;
+                    int bodyGrowth = 2;
+
+                    float distanceX = Math.Abs((obj.Position.Transform.x + (scale / 2)) - (snakeHead.Transform.x + (scale / 2)));
+                    float distanceY = Math.Abs((obj.Position.Transform.y + (scale / 2)) - (snakeHead.Transform.y + (scale / 2)));
+
+                    if (distanceX <= scale && distanceY <= scale)
+                    {
+                        for (int j = 0; j < bodyGrowth; j++)
+                        {
+                            snakeBody.Add(new Position(new Vector2(x, y)));
+                        }
+
+                        objDamage.GetFood();
+
+                        snakeScore++;
+
+                        GameManager.Instance.Score = snakeScore;
+
+                    }
                 }
-
-                f.foodNewLocation();
-
-                this.food = f;
-
-                snakeScore++;
-
-                GameManager.Instance.Score = snakeScore;
             }
         }
 
-        public void deadByEnemy(Enemy e)
+        public void deadByEnemy()
         {
             Position snakeHead = snakeBody[snakeBody.Count - 1];
 
-            Position enemy = e.enemyLocation();
-
-            int scale = 10;
-
-            float distanceXenemy = Math.Abs((snakeHead.Transform.x + (scale / 2)) - (enemy.Transform.x + (scale / 2)));
-            float distanceYenemy = Math.Abs((snakeHead.Transform.y + (scale / 2)) - (enemy.Transform.y + (scale / 2)));
-
-            if (distanceXenemy <= scale && distanceYenemy <= scale)
+            for (int i = 0; i < GameManager.Instance.LevelController.GameObjectsList.Count; i++)
             {
-                onDead.Invoke();
+                GameObject obj = GameManager.Instance.LevelController.GameObjectsList[i];
+
+                if (obj is IDamageable objDamage)
+                {
+                    int scale = 10;
+
+                    float distanceX = Math.Abs((obj.Position.Transform.x + (scale / 2)) - (snakeHead.Transform.x + (scale / 2)));
+                    float distanceY = Math.Abs((obj.Position.Transform.y + (scale / 2)) - (snakeHead.Transform.y + (scale / 2)));
+
+                    if (distanceX <= scale && distanceY <= scale)
+                    {
+                        GetDeath();
+                    }
+                }
             }
 
         }
@@ -217,7 +225,7 @@ namespace MyGame
 
                 if (distanceX <= scale && distanceY <= scale)
                 {
-                    onDead.Invoke();
+                    GetDeath();
                 }
 
             }
@@ -229,8 +237,13 @@ namespace MyGame
 
             if (snakeHead.Transform.x >= map.Width || snakeHead.Transform.x <= 0 || snakeHead.Transform.y >= map.Height || snakeHead.Transform.y <= 0 )
             {
-                onDead.Invoke();
+                GetDeath();
             }
+        }
+
+        public void GetDeath()
+        {
+            onDead.Invoke();
         }
 
         public void restart()

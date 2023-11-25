@@ -60,7 +60,8 @@ namespace MyGame
 
         public void SpawnNewEnemy()
         {
-            
+            Enemy newEnemy = new Enemy(new Vector2(random.Next(15, map.Width - 15), random.Next(15, map.Height - 15)));
+            GameManager.Instance.LevelController.GameObjectsList.Add(newEnemy);
         }
     }
 }

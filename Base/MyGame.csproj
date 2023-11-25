@@ -68,6 +68,8 @@
     <Compile Include="Time.cs" />
     <Compile Include="Vector2.cs" />
     <Compile Include="IDamageable.cs" />
+    <Compile Include="IFoodable.cs" />
+    <Compile Include="IDeadable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
