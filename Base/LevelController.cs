@@ -8,7 +8,7 @@ namespace MyGame
 {
     public class LevelController
     {
-        public List<GameObject> GameObjectsList = new List<GameObject>();
+        public List<GameObject> EnemyList = new List<GameObject>();
 
         private Snake player;
 

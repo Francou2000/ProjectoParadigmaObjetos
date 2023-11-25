@@ -10,6 +10,8 @@ namespace MyGame
     {
         public Position bulletPosition = new Position();
 
+        private Snake snake;
+
         public Map map = new Map();
 
         private Enemy enemy;
@@ -32,6 +34,7 @@ namespace MyGame
         {
             currentAnimation.Update();
             Move();
+            CheckCollisions();
         }
 
         protected override void CreateAnimations()
@@ -60,31 +63,37 @@ namespace MyGame
             }
         }
 
-        public void DestroyBullet()
-        {
-            
-        }
-
         public Position bulletLocation()
         {
             return bulletPosition;
         }
 
-        public void killEnemy(Enemy e)
+        private void CheckCollisions()
         {
-            Position enemy = e.enemyLocation();
 
-            int scale = 10;
-
-            float distanceX = Math.Abs((bulletPosition.Transform.x + (scale / 2)) - (enemy.Transform.x + (scale / 2)));
-            float distanceY = Math.Abs((bulletPosition.Transform.y + (scale / 2)) - (enemy.Transform.y + (scale / 2)));
-
-            if (distanceX <= scale && distanceY <= scale)
+            for (int i = 0; i < GameManager.Instance.LevelController.EnemyList.Count; i++)
             {
-                e.newEnemy();
+                GameObject obj = GameManager.Instance.LevelController.EnemyList[i];
 
-                this.enemy = e;
+                if (obj is IDamageable objDamage)
+                {
+                    int scale = 10;
+
+                    float distanceX = Math.Abs((obj.Position.Transform.x + (scale / 2)) - (Position.Transform.x + (scale / 2)));
+                    float distanceY = Math.Abs((obj.Position.Transform.y + (scale / 2)) - (Position.Transform.y + (scale / 2)));
+
+                    if (distanceX <= scale && distanceY <= scale)
+                    {
+                        objDamage.GetDamage();
+                        DestroyBullet();
+                    }
+                }
             }
+        }
+
+        public void DestroyBullet()
+        {
+
         }
     }
 }

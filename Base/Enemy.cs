@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
-    public class Enemy : GameObject
+    public class Enemy : GameObject, IDamageable
     {
         public Position enemyPosition = new Position();
 
@@ -52,9 +52,15 @@ namespace MyGame
             return enemyPosition;
         }
 
-        public void newEnemy()
+        public void GetDamage()
         {
             enemyPosition.Transform = new Vector2(random.Next(15, map.Width - 15), random.Next(15, map.Height - 15));
+            SpawnNewEnemy();
+        }
+
+        public void SpawnNewEnemy()
+        {
+            
         }
     }
 }

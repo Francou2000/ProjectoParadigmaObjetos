@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -56,7 +56,6 @@
     <Compile Include="Food.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="GameObject.cs" />
-    <Compile Include="GenericDynamicPool.cs" />
     <Compile Include="GenericNoDynamicPool.cs" />
     <Compile Include="LevelController.cs" />
     <Compile Include="Map.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="Sound.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="Vector2.cs" />
+    <Compile Include="IDamageable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -144,5 +144,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="assets\Food2\" />
+    <Folder Include="assets\Food2\Idle\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

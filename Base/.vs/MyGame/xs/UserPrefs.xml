@@ -1,16 +1,25 @@
 ﻿<Properties StartupConfiguration="{2CDCD5DC-5145-4C37-ACEA-CE81D939F89E}|Default">
-  <MonoDevelop.Ide.ItemProperties.MyGame PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="LevelController.cs">
+    <Files>
+      <File FileName="Bullet.cs" Line="106" Column="66" />
+      <File FileName="Enemy.cs" Line="63" Column="13" />
+      <File FileName="LevelController.cs" Line="17" Column="27" />
+      <File FileName="IDamageable.cs" Line="1" Column="1" />
+      <File FileName="Food.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="MyGame" expanded="True">
-            <Node name="MyGame" expanded="True" />
-          </Node>
-          <Node name="MyGame" expanded="True" selected="True">
-            <Node name="MyGame" expanded="True" />
+            <Node name="MyGame" expanded="True">
+              <Node name="assets" expanded="True" />
+              <Node name="LevelController.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -20,7 +29,5 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.MyGame PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
