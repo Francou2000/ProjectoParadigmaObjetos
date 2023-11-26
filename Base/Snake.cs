@@ -53,6 +53,8 @@ namespace MyGame
             x = (int)pos.x;
             y = (int)pos.y;
 
+            bulletsPool = new GenericNoDynamicPool<Bullet>(1, new Bullet(new Vector2(0, 0),100));
+
             onDead += GameManager.Instance.snakeDead;
         }
 
