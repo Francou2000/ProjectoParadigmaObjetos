@@ -29,13 +29,11 @@ namespace MyGame
         {
             time.Initialize();
 
-            food = new Food(new Vector2(100,100));
+            GameManager.Instance.LevelController.GameObjectsList.Add(new Enemy(new Vector2(200, 200)));
+            GameManager.Instance.LevelController.GameObjectsList.Add(FoodFactory.CreateFood(FoodType.Static, new Vector2(100,100)));
+            GameManager.Instance.LevelController.GameObjectsList.Add(FoodFactory.CreateFood(FoodType.Horizontal, new Vector2(300, 300)));
 
-            enemy = new Enemy(new Vector2(200, 200));
-            
             player = new Snake(new Vector2(50,50));
-
-            //GameObjectsList.Add(Enemyfactory.CreateEnemy(EnemyType.Fast, new Vector2(700, 300)));
         }
 
         public void Update()

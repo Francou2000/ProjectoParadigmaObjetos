@@ -274,7 +274,12 @@ namespace MyGame
             snakeBody.Add(new Position(new Vector2(x, y)));
             GameManager.Instance.Dead = false;
             dir = 'r';
+
+            GameManager.Instance.LevelController.GameObjectsList.Clear();
+
+            GameManager.Instance.LevelController.GameObjectsList.Add(new Enemy(new Vector2(200, 200)));
+            GameManager.Instance.LevelController.GameObjectsList.Add(FoodFactory.CreateFood(FoodType.Static, new Vector2(100, 100)));
+            GameManager.Instance.LevelController.GameObjectsList.Add(FoodFactory.CreateFood(FoodType.Horizontal, new Vector2(300, 300)));
         }
     }
-
 }

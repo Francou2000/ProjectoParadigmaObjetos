@@ -12,12 +12,12 @@ namespace MyGame
     }
     public static class FoodFactory
     {
-        public static Food CreateEnemy(FoodType type, Vector2 position)
+        public static Food CreateFood(FoodType type, Vector2 position)
         {
             switch (type)
             {
                 case FoodType.Static:
-                    return new Food(position);
+                    return new Food(position, 0);
                 case FoodType.Horizontal:
                     return new Food(position, 100);
             }
