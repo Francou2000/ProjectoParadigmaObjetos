@@ -12,15 +12,11 @@ namespace MyGame
 
         private List<T> itemsAvailable = new List<T>();
 
-        private Func<T> itemFactory;
-
-        public GenericNoDynamicPool(int maxPool, Func<T> factory)
+        public GenericNoDynamicPool(int maxPool, T newItem)
         {
-            itemFactory = factory;
-
             for (int i = 0; i < maxPool; i++)
             {
-                itemsAvailable.Add(itemFactory());
+                itemsAvailable.Add(newItem);
             }
         }
 
