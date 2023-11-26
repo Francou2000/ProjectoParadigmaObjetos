@@ -55,9 +55,28 @@ namespace MyGame
 
         private void Move()
         {
-            position.Translate(new Vector2(0, -1), speed);
+            if (GameManager.Instance.LevelController.Player.dir == 'u')
+            {
+                position.Translate(new Vector2(0, -1), speed);
+            }
 
-            if (position.Transform.y < 0)
+            if (GameManager.Instance.LevelController.Player.dir == 'd')
+            {
+                position.Translate(new Vector2(0, 1), speed);
+            }
+
+            if (GameManager.Instance.LevelController.Player.dir == 'l')
+            {
+                position.Translate(new Vector2(-1, 0), speed);
+            }
+
+            if (GameManager.Instance.LevelController.Player.dir == 'r')
+            {
+                position.Translate(new Vector2(1, 0), speed);
+            }
+
+
+            if (position.Transform.y < 0 || position.Transform.x < 0 || position.Transform.y > 500 || position.Transform.x > 500)
             {
                 DestroyBullet();
             }

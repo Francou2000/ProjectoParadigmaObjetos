@@ -31,7 +31,7 @@ namespace MyGame
         public int x { get; set; }
         public int y { get; set; }
 
-        private char dir = 'r';
+        public char dir = 'r';
 
         public Map map = new Map();
 
