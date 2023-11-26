@@ -16,6 +16,12 @@ namespace MyGame
 
         private Animation idleAnimation;
 
+        private DateTime timeLastShoot;
+
+        private float timeBetweenShoots = 1f;
+
+        private GenericNoDynamicPool<Bullet> bulletsPool;
+
         private Food food;
 
         private Enemy enemy;
@@ -106,6 +112,11 @@ namespace MyGame
             {
                 dir = 'd';
             }
+
+            if (Engine.KeyPress(Engine.KEY_ESP))
+            {
+                Shoot();
+            }
         }
 
         public void moveSnake()
@@ -149,7 +160,16 @@ namespace MyGame
 
         private void Shoot()
         {
-        
+            DateTime currentTime = DateTime.Now;
+            if ((currentTime - timeLastShoot).TotalSeconds >= timeBetweenShoots)
+            {
+                Bullet newBullet = bulletsPool.GetItem();
+                if (newBullet != null)
+                {
+                    GameManager.Instance.LevelController.GameObjectsList.Add(newBullet);
+                    timeLastShoot = currentTime;
+                }
+            }
         }
 
         public void snakeGrow ()
