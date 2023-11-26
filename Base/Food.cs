@@ -56,7 +56,7 @@ namespace MyGame
         {
             Position.Translate(new Vector2(1, 0), speed);
 
-            if (Position.Transform.x > 1000)
+            if (Position.Transform.x > 500)
             {
                 foodPosition.Transform = new Vector2(0 - 10, Position.Transform.y);
             }

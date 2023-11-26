@@ -20,7 +20,7 @@ namespace MyGame
 
         private float timeBetweenShoots = 1f;
 
-        private GenericNoDynamicPool<Bullet> bulletsPool;
+        public GenericNoDynamicPool<Bullet> bulletsPool;
 
         private Food food;
 

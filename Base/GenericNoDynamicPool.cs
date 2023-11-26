@@ -33,7 +33,7 @@ namespace MyGame
             return itemToReturn;
         }
 
-        private void RecycleItem(T item)
+        public void RecycleItem(T item)
         {
             itemsInUse.Remove(item);
             itemsAvailable.Add(item);

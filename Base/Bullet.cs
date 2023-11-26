@@ -92,7 +92,7 @@ namespace MyGame
 
         public void DestroyBullet()
         {
-
+            GameManager.Instance.LevelController.Player.bulletsPool.RecycleItem(this);
         }
     }
 }
