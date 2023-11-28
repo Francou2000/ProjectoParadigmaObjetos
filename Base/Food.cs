@@ -9,8 +9,6 @@ namespace MyGame
 {
     public class Food : GameObject, IFoodable
     {
-        public Position foodPosition = new Position();
-
         Random random = new Random();
 
         public Map map = new Map();
@@ -27,13 +25,15 @@ namespace MyGame
 
             this.speed = speed;
 
-            foodPosition.Transform = pos;
+            position.Transform = pos;
+
             renderer = new Renderer(currentAnimation);
         }
 
         public override void Update()
         {
             currentAnimation.Update();
+            MoveFood();
         }
 
         protected override void CreateAnimations()
@@ -49,7 +49,7 @@ namespace MyGame
 
         public override void Render()
         {
-            renderer.Render(foodPosition);
+            renderer.Render(position);
         }
 
         private void MoveFood()
@@ -58,19 +58,16 @@ namespace MyGame
 
             if (Position.Transform.x > 500)
             {
-                foodPosition.Transform = new Vector2(0 - 10, Position.Transform.y);
+                position.Transform = new Vector2(0 - 10, Position.Transform.y);
             }
-        }
-
-
-        public Position foodLocation()
-        {
-            return foodPosition;
         }
 
         public void GetFood()
         {
-            foodPosition.Transform = new Vector2 (random.Next(15, map.Width - 15), random.Next(15, map.Height - 15));               
+            int x = random.Next(15, map.Width - 15);
+            int y = random.Next(15, map.Height - 15);
+            
+            position.Transform = new Vector2 (x,y);               
         }
     }
 }

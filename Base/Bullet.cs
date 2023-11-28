@@ -8,17 +8,15 @@ namespace MyGame
 {
     public class Bullet : GameObject
     {
-        public Position bulletPosition = new Position();
-
-        private Snake snake;
-
         public Map map = new Map();
-
-        private Enemy enemy;
 
         private Animation idleAnimation;
 
-        private int speed = 0;
+        private int speed = 10;
+
+        private char dir = 'r';
+
+        public char Dir { set { dir = value; } }   
 
         public Bullet(Vector2 pos, int speed) : base(pos)
         {
@@ -26,7 +24,9 @@ namespace MyGame
             CreateAnimations();
             currentAnimation = idleAnimation;
 
-            bulletPosition.Transform = pos;
+            position.Transform = pos;
+
+            this.speed = speed;
             renderer = new Renderer(currentAnimation);
         }
 
@@ -50,27 +50,27 @@ namespace MyGame
 
         public override void Render()
         {
-            renderer.Render(bulletPosition);
+            renderer.Render(position);
         }
 
         private void Move()
         {
-            if (GameManager.Instance.LevelController.Player.dir == 'u')
+            if (dir == 'u')
             {
                 position.Translate(new Vector2(0, -1), speed);
             }
 
-            if (GameManager.Instance.LevelController.Player.dir == 'd')
+            if (dir == 'd')
             {
                 position.Translate(new Vector2(0, 1), speed);
             }
 
-            if (GameManager.Instance.LevelController.Player.dir == 'l')
+            if (dir == 'l')
             {
                 position.Translate(new Vector2(-1, 0), speed);
             }
 
-            if (GameManager.Instance.LevelController.Player.dir == 'r')
+            if (dir == 'r')
             {
                 position.Translate(new Vector2(1, 0), speed);
             }
@@ -79,11 +79,6 @@ namespace MyGame
             {
                 DestroyBullet();
             }
-        }
-
-        public Position bulletLocation()
-        {
-            return bulletPosition;
         }
 
         private void CheckCollisions()
@@ -111,6 +106,7 @@ namespace MyGame
         public void DestroyBullet()
         {
             GameManager.Instance.LevelController.Player.bulletsPool.RecycleItem(this);
+            GameManager.Instance.LevelController.GameObjectsList.Remove(this);
         }
     }
 }

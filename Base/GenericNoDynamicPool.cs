@@ -8,9 +8,9 @@ namespace MyGame
 {
     public class GenericNoDynamicPool <T>
     {
-        private List<T> itemsInUse = new List<T>();
+        public List<T> itemsInUse = new List<T>();
 
-        private List<T> itemsAvailable = new List<T>();
+        public List<T> itemsAvailable = new List<T>();
 
         public GenericNoDynamicPool(int maxPool, T newItem)
         {
@@ -28,7 +28,7 @@ namespace MyGame
             {
                 itemToReturn = itemsAvailable[0];
                 itemsAvailable.RemoveAt(0);
-                itemsAvailable.Add(itemToReturn);
+                itemsInUse.Add(itemToReturn);
             }
             
             return itemToReturn;

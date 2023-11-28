@@ -14,14 +14,6 @@ namespace MyGame
 
         public Snake Player => player;
 
-        private Food food;
-
-        public Food Food => food;
-
-        private Enemy enemy;
-
-        public Enemy Enemy => enemy;
-
         private Time time;
 
 

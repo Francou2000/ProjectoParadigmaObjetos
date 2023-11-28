@@ -1,6 +1,6 @@
 ﻿using System;
 
-class Font
+public class Font
 {
     // Atributos
 

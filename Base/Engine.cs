@@ -4,7 +4,7 @@ using System.Drawing;
 using Tao.Sdl;
 using static System.Net.Mime.MediaTypeNames;
 
-class Engine
+public class Engine
 {
     static IntPtr screen;
     static int ancho, alto;

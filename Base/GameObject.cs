@@ -20,8 +20,6 @@ namespace MyGame
             position = new Position(pos);
 
             CreateAnimations();
-
-            //renderer = new Renderer(currentAnimation);
         }
 
         protected virtual void CreateAnimations()

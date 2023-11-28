@@ -22,10 +22,6 @@ namespace MyGame
 
         public GenericNoDynamicPool<Bullet> bulletsPool;
 
-        private Food food;
-
-        private Enemy enemy;
-
         public event Action onDead;
         
         public int x { get; set; }
@@ -35,7 +31,7 @@ namespace MyGame
 
         public Map map = new Map();
 
-        private int snakeScore = 0; 
+        public int snakeScore = 0; 
 
         public Snake(Vector2 pos) : base(pos)
         {
@@ -53,7 +49,7 @@ namespace MyGame
             x = (int)pos.x;
             y = (int)pos.y;
 
-            bulletsPool = new GenericNoDynamicPool<Bullet>(1, new Bullet(new Vector2(0, 0),100));
+            bulletsPool = new GenericNoDynamicPool<Bullet>(1, new Bullet(new Vector2(0, 0),300));
 
             onDead += GameManager.Instance.snakeDead;
         }
@@ -115,7 +111,7 @@ namespace MyGame
                 dir = 'd';
             }
 
-            if (Engine.KeyPress(Engine.KEY_ESP))
+            if (Engine.KeyPress(Engine.KEY_C))
             {
                 Shoot();
             }
@@ -163,11 +159,14 @@ namespace MyGame
         private void Shoot()
         {
             DateTime currentTime = DateTime.Now;
+
             if ((currentTime - timeLastShoot).TotalSeconds >= timeBetweenShoots)
             {
                 Bullet newBullet = bulletsPool.GetItem();
                 if (newBullet != null)
                 {
+                    newBullet.Position.Transform = snakeBody[snakeBody.Count - 1].Transform;
+                    newBullet.Dir = dir;
                     GameManager.Instance.LevelController.GameObjectsList.Add(newBullet);
                     timeLastShoot = currentTime;
                 }
@@ -184,6 +183,7 @@ namespace MyGame
 
                 if (obj is IFoodable objDamage)
                 {
+
                     int scale = 10;
                     int bodyGrowth = 2;
 
@@ -242,6 +242,8 @@ namespace MyGame
 
                 int scale = 10;
 
+                Engine.Debug(snakeBody.Count.ToString());
+
                 float distanceX = Math.Abs((snakeHead.Transform.x + (scale / 2)) - (snake.Transform.x + (scale / 2)));
                 float distanceY = Math.Abs((snakeHead.Transform.y + (scale / 2)) - (snake.Transform.y + (scale / 2)));
 
@@ -278,6 +280,8 @@ namespace MyGame
             dir = 'r';
 
             GameManager.Instance.LevelController.GameObjectsList.Clear();
+
+            //bulletsPool.itemInUse.Clear();
 
             GameManager.Instance.LevelController.GameObjectsList.Add(new Enemy(new Vector2(200, 200)));
             GameManager.Instance.LevelController.GameObjectsList.Add(FoodFactory.CreateFood(FoodType.Static, new Vector2(100, 100)));

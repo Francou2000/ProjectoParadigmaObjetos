@@ -8,8 +8,6 @@ namespace MyGame
 {
     public class Enemy : GameObject, IDamageable
     {
-        public Position enemyPosition = new Position();
-
         public Map map = new Map();
 
         Random random = new Random();
@@ -22,7 +20,7 @@ namespace MyGame
             CreateAnimations();
             currentAnimation = idleAnimation;
 
-            enemyPosition.Transform = pos;
+            position.Transform = pos;
             renderer = new Renderer(currentAnimation);
         }
 
@@ -44,17 +42,12 @@ namespace MyGame
 
         public override void Render()
         {
-            renderer.Render(enemyPosition);
-        }
-
-        public Position enemyLocation()
-        {
-            return enemyPosition;
+            renderer.Render(position);
         }
 
         public void GetDamage()
         {
-            enemyPosition.Transform = new Vector2(random.Next(15, map.Width - 15), random.Next(15, map.Height - 15));
+            position.Transform = new Vector2(random.Next(15, map.Width - 15), random.Next(15, map.Height - 15));
             SpawnNewEnemy();
         }
 
