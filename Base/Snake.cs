@@ -31,7 +31,9 @@ namespace MyGame
 
         public Map map = new Map();
 
-        public int snakeScore = 0; 
+        public int snakeScore = 0;
+
+        public int bulletSpeed = 300;
 
         public Snake(Vector2 pos) : base(pos)
         {
@@ -49,7 +51,7 @@ namespace MyGame
             x = (int)pos.x;
             y = (int)pos.y;
 
-            bulletsPool = new GenericNoDynamicPool<Bullet>(1, new Bullet(new Vector2(0, 0),300));
+            bulletsPool = new GenericNoDynamicPool<Bullet>(1, new Bullet(new Vector2(0, 0), bulletSpeed));
 
             onDead += GameManager.Instance.snakeDead;
         }
@@ -241,8 +243,6 @@ namespace MyGame
                 Position snake = snakeBody[i];
 
                 int scale = 10;
-
-                Engine.Debug(snakeBody.Count.ToString());
 
                 float distanceX = Math.Abs((snakeHead.Transform.x + (scale / 2)) - (snake.Transform.x + (scale / 2)));
                 float distanceY = Math.Abs((snakeHead.Transform.y + (scale / 2)) - (snake.Transform.y + (scale / 2)));

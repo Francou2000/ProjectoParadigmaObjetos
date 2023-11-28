@@ -8,25 +8,38 @@ namespace UnitTestProject1
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CheckScore()
         {
-            var snakeScore = GameManager.Instance.LevelController.Player.snakeScore;
-            var actualScore = GameManager.Instance.Score;
+            int snakeScore = GameManager.Instance.LevelController.Player.snakeScore;
+            var playerScore = snakeScore;
 
-            Assert.AreEqual(snakeScore, actualScore);
+            int actualScore = GameManager.Instance.Score;
+            var gameManagerScore = actualScore;
+
+            Assert.AreEqual(playerScore, gameManagerScore);
         }
+
         [TestMethod]
-        public void TestMethod2()
+        public void CheckBulletPoolSize()
         {
             var bulletPool = GameManager.Instance.LevelController.Player.bulletsPool.itemsAvailable;
-            var poolSize = 1;
 
-            Assert.AreEqual(poolSize, bulletPool.Count);
+            int poolSize = 1;
+            var size = poolSize;
+
+            Assert.AreEqual(size, bulletPool.Count);
         }
+        
         [TestMethod]
-        public void TestMethod3()
+        public void CheckBulletVelocity()
         {
+            int bulletVelocity = GameManager.Instance>LevelController.Player.bulletSpeed;
+            var bulletInicialVelocity = bulletVelocity;
 
+            int bulletSetVelocity = 300;
+            var expectedVelocity = bulletSetVelocity;
+
+            Assert.AreEqual(bulletSetVelocity, bulletInicialVelocity);
         }
     }
 }
