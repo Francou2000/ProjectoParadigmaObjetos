@@ -33,7 +33,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void CheckBulletVelocity()
         {
-            int bulletVelocity = GameManager.Instance>LevelController.Player.bulletSpeed;
+            int bulletVelocity = GameManager.Instance.LevelController.Player.bulletSpeed;
             var bulletInicialVelocity = bulletVelocity;
 
             int bulletSetVelocity = 300;
